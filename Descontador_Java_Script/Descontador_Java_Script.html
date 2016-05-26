@@ -1,0 +1,58 @@
+    <script>
+        $(document).ready(function () {
+            $('body').addClass('js'); // adds class to body tag when JavaScript is enabled (...but you already do this right?)
+            skipNavigation('skip-nav'); // send container id
+
+            //Ejecuta el contador de tiempo
+            myFunction();
+//            //Ejecuta el cierre
+            $( "#infoClose" ).click(function() {
+                myFunction_cerrar_infoClose();
+            });
+//
+
+            //Funcion Ejecutada
+            function myFunction() {
+                setTimeout(function(){
+                    $("#infoBar").show()
+
+                //Desconctador en JavaSCript
+                    var dotCounter = 0;
+                    var desCounter = 60;
+                    (function addDot() {
+                        setTimeout(function() {
+                            if (dotCounter++ < 60) {
+                                $('#infoTimeOut').html( parseInt( desCounter - dotCounter )  +  ' Segundos');
+                                addDot();
+                            }
+                        }, 1000);
+                    })();
+
+                }, 3000);
+                //Desconctador en JavaSCript
+
+            };
+//
+//          //funcion cerrar
+            function myFunction_cerrar_infoClose() {
+                $("#infoBar").hide();
+            };
+
+
+        });
+    </script>
+
+
+<div id="infoBar" style="position: absolute; z-index: 2000; top: 0px; left: 0px; width: 1349px; background-color: rgb(255, 153, 0);">
+	<table width="100%">
+	<tbody>
+	<tr nowrap="" id="infoContent" style="font-weight: bold; color: white; height: 45px;">
+	<td width="30"></td>
+	<td align="left">ATENCIÓN: Su sesión se cerrará en <span id="infoTimeOut">36 segundos</span>. Almacene sus cambios.</td>
+	<td width="60" align="left">
+	<div id="infoClose" style="border-color: rgb(255, 255, 255); cursor: pointer;">[cerrar]</div>
+	</td>
+	</tr>
+	</tbody>
+	</table>
+</div>
